@@ -2,7 +2,7 @@ shader_type spatial;
 
 #include "res://addons/shader_wrap_mode/wrap_mode.gdshaderinc"
 
-uniform sampler2D albedo_texture;
+uniform sampler2D albedo_texture: repeat_enable;
 uniform int albedo_texture_wrap_mode = 0;
 uniform vec3 uv_offset = vec3(0.0);
 uniform vec3 uv_scale = vec3(1.0);
