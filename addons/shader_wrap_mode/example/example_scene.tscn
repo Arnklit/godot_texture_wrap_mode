@@ -1,0 +1,79 @@
+[gd_scene load_steps=8 format=3 uid="uid://hpc024w7jrxm"]
+
+[ext_resource type="Shader" path="res://addons/shader_wrap_mode/example/example.gdshader" id="1_2qlng"]
+[ext_resource type="Texture2D" uid="uid://hqvcgpfnct5w" path="res://addons/shader_wrap_mode/example/test_texture.png" id="2_820po"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mfnxx"]
+render_priority = 0
+shader = ExtResource("1_2qlng")
+shader_parameter/albedo_texture_wrap_mode = 0
+shader_parameter/uv_offset = Vector3(-1.5, -1.5, 0)
+shader_parameter/uv_scale = Vector3(4, 4, 4)
+shader_parameter/albedo_texture = ExtResource("2_820po")
+
+[sub_resource type="QuadMesh" id="QuadMesh_1yuw8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i0uiy"]
+render_priority = 0
+shader = ExtResource("1_2qlng")
+shader_parameter/albedo_texture_wrap_mode = 1
+shader_parameter/uv_offset = Vector3(-1.5, -1.5, 0)
+shader_parameter/uv_scale = Vector3(4, 4, 4)
+shader_parameter/albedo_texture = ExtResource("2_820po")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wumej"]
+render_priority = 0
+shader = ExtResource("1_2qlng")
+shader_parameter/albedo_texture_wrap_mode = 2
+shader_parameter/uv_offset = Vector3(-1.5, -1.5, 0)
+shader_parameter/uv_scale = Vector3(4, 4, 4)
+shader_parameter/albedo_texture = ExtResource("2_820po")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n62gl"]
+render_priority = 0
+shader = ExtResource("1_2qlng")
+shader_parameter/albedo_texture_wrap_mode = 3
+shader_parameter/uv_offset = Vector3(-2, -2, 0)
+shader_parameter/uv_scale = Vector3(4, 4, 4)
+shader_parameter/albedo_texture = ExtResource("2_820po")
+
+[node name="ExampleScene" type="Node3D"]
+
+[node name="RepeatMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+material_override = SubResource("ShaderMaterial_mfnxx")
+mesh = SubResource("QuadMesh_1yuw8")
+
+[node name="RepeatLabel3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 0)
+text = "Repeat"
+
+[node name="ClampMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+material_override = SubResource("ShaderMaterial_i0uiy")
+mesh = SubResource("QuadMesh_1yuw8")
+
+[node name="ClampLabel3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 0)
+text = "Clamp
+"
+
+[node name="MirrorMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+material_override = SubResource("ShaderMaterial_wumej")
+mesh = SubResource("QuadMesh_1yuw8")
+
+[node name="MirrorLabel3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
+text = "Mirror
+"
+
+[node name="MirrorOnceMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+material_override = SubResource("ShaderMaterial_n62gl")
+mesh = SubResource("QuadMesh_1yuw8")
+
+[node name="MirrorOnceLabel3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 0)
+text = "Mirror Once
+"
